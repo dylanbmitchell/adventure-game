@@ -11,10 +11,15 @@
     
     </style>
 </head>
-<!--<audio id="yourAudioTag" src="triggered.mp3"></audio>-->
+<audio id="yourAudioTag" src="triggered.ogg"></audio>
 <body>
     
     <script>
+        
+        var inventory = {
+            key:false,
+            dagger:false,
+        }
         
 //        //function test
 //        
@@ -39,7 +44,7 @@
         alert("Well, I guess we should get started");
         
          //bad writing
-        var dead = false;
+        
         var ok = confirm("am I doing good narrating? Because I feel like its not that great");
         if (ok == false){
             alert("ouch, that hurt, geeze");
@@ -93,13 +98,15 @@
                 
             }
             if (ok == false){
+                alert("oh, hey, you found a key on the ground!");
+                inventory.key = true;
                 start();
             }
         }
         
         //south
         function south(){
-            var river = prompt("You head toward the river, you can go north from where you came, east down the river, or west up the river, the choice is yours");
+            var rivers = prompt("You head toward the river, you can go north from where you came, east down the river, or west up the river, the choice is yours");
                     switch(river){
                         case "north":
                             start();
@@ -112,8 +119,9 @@
                             break;
                         case "west":
                             alert("You find a cow at the origin of the stream, she is sad and is literally crying a river, she sees you and tells you that she just needs some alone time.");
-                            river();
+                            south();
                             break;
+                            
                         default:
                             alert(begAdv + " is not a direction, dummy");
                                 
@@ -184,7 +192,7 @@
                     
                        }
             
-        var dagger = false;
+        
         
         function explore(){
             what = prompt("you decide to take a look around the city, do you go to the bakery, the office building, the house, or back?");
@@ -199,7 +207,7 @@
                                     alert("the troll doesn't want your clothes and lets you go out of pity.");
                                     alert("he also gives you one of his many daggers as a token of good will");
                                     
-                                    dagger = true;
+                                    inventory.dagger = true;
                                     explore();
                                     break;
                                     
@@ -216,18 +224,47 @@
                             explore();
                             break;
                         case "house":
-                            ok = confirm("you find a shining gem in the basement of the house. Do you take it?");
-                            if(ok == true){
-                                alert("you feel a tingling in your fingers as you pick up the gem.");
-                                alert("you find yourself in a room full of gold and gems.");
-                                alert("you are able to live out your life as a rich" + gender);
-                                win();
+                            
+                            if(inventory.key == true){
+                                alert("the door to the house is locked, but you use your key that you found earlier to open it.");
+                                    ok = confirm("you find a shining gem in the basement of the house. Do you take it?");
+                                if(ok == true){
+                                    alert("you feel a tingling in your fingers as you pick up the gem.");
+                                    alert("you find yourself in a room full of gold and gems.");
+                                    alert("you are able to live out your life as a rich" + gender);
+                                    win();
+                                }
+                                if (ok == false){
+                                    alert("you decide to leave it be.")
+                                    explore();
+                                }
+                                break;
                             }
-                            if (ok == false){
-                                alert("you decide to leave it be.")
-                                explore();
+                            else{
+                                alert("a skeleton jumps out of the shadows, it says it wants to eat you");
+                                if(inventory.dagger == true){
+                                    alert("you throw the dagger you got earlier at the skeleton and he collapses into a hundred pieces, you find the key to the house among the peices");
+                                    ok = confirm("you find a shining gem in the basement of the house. Do you take it?");
+                                if(ok == true){
+                                    alert("you feel a tingling in your fingers as you pick up the gem.");
+                                    alert("you find yourself in a room full of gold and gems.");
+                                    alert("you are able to live out your life as a rich " + gender);
+                                    win();
+                                }
+                                if (ok == false){
+                                    alert("you decide to leave it be.")
+                                    explore();
+                                }
+                                break;
+                                    
+                                }
+                                else{
+                                    alert("the skeleton eats your face off.");
+                                    dead();
+                                    break;
+                                }
                             }
-                            break;
+                            
                         case "back":
                             sky();
                             break;
@@ -236,18 +273,19 @@
                             explore();
                             break;
         }
+        }
         
         //fix
         function dead(){
-            document.write("<h1 style='color:red; text-align: center;'>well, ah, you died");
-//            document.getElementById('yourAudioTag').play();
+            document.write("<h1 style='color:red; text-align: center;'>well, ah, you died <br> refresh to restart, unless your too lame to");
+            document.getElementById('yourAudioTag').play();
         }
         function win(){
             document.write("<h1 style='color:yellow; text-align: center;'>you won? you actually won? <br> congrats!");
         }
         
         
-        }
+        
        
         
         
