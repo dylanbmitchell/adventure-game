@@ -21,6 +21,11 @@
             dagger:false,
         }
         
+        var player = {
+            name:"",
+            race:"",
+        }
+        
 //        //function test
 //        
 //        var bread = prompt("welcome to stinky joes, how many slopy joes do you want? And no, we don't serve anything other than sloppy joes.");
@@ -32,14 +37,17 @@
 //        
         
         //greeting
-        var playerName = prompt("Whats your name son?");
-        alert(playerName + " really, thats the best you could come up with?");
+        player.name = prompt("Whats your name son?");
+        alert(player.name + " really, thats the best you could come up with?");
         
         
-        var gender = prompt("Whats your gender?");
+        player.race = prompt("What kind of creature are you?");
         
-        alert("okay...");
-        alert("Hello, " + playerName + " the " + gender);
+        if(player.race == "human"){
+            alert("Human, *yawn* wow, really creative, i've never heard that one before...");
+        }
+        
+        alert("Hello, " + player.name + " the " + player.race);
         
         alert("Well, I guess we should get started");
         
@@ -100,6 +108,7 @@
             if (ok == false){
                 alert("oh, hey, you found a key on the ground!");
                 inventory.key = true;
+                
                 start();
             }
         }
@@ -124,7 +133,7 @@
                             
                         default:
                             alert(begAdv + " is not a direction, dummy");
-                                
+                            south();
                             break;
                                 }
         }
@@ -212,12 +221,13 @@
                                     break;
                                     
                                 }
-                                if(ok == false){
+                                
+                            }
+                            if(ok == false){
                                     alert("the troll tackles you as you try to run, he pulls out a dagger and stabs you untill you're dead.");
                                     dead();
                                     break;
                                 }
-                            }
                             break;
                         case "office":
                             alert("the door is welded shut.");
@@ -231,7 +241,7 @@
                                 if(ok == true){
                                     alert("you feel a tingling in your fingers as you pick up the gem.");
                                     alert("you find yourself in a room full of gold and gems.");
-                                    alert("you are able to live out your life as a rich" + gender);
+                                    alert("you are able to live out your life as a rich " + player.race);
                                     win();
                                 }
                                 if (ok == false){
@@ -248,7 +258,7 @@
                                 if(ok == true){
                                     alert("you feel a tingling in your fingers as you pick up the gem.");
                                     alert("you find yourself in a room full of gold and gems.");
-                                    alert("you are able to live out your life as a rich " + gender);
+                                    alert("you are able to live out your life as a rich " + player.race);
                                     win();
                                 }
                                 if (ok == false){
@@ -277,11 +287,13 @@
         
         //fix
         function dead(){
-            document.write("<h1 style='color:red; text-align: center;'>well, ah, you died <br> refresh to restart, unless your too lame to");
+            document.write("<h1 style='color:red; text-align: center;'>well, ah, you died refresh to restart, unless your too lame to");
+            document.write('<img src="/loose.png">');
             document.getElementById('yourAudioTag').play();
         }
         function win(){
-            document.write("<h1 style='color:yellow; text-align: center;'>you won? you actually won? <br> congrats!");
+            document.write("<h1 style='color:yellow; text-align: center;'>you won? you actually won?  congrats!");
+            document.write('<img src="/win.png">');
         }
         
         
