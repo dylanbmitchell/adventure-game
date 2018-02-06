@@ -24,7 +24,11 @@
         var player = {
             name:"",
             race:"",
+            age:false,
         }
+        
+        beg();
+        
         
 //        //function test
 //        
@@ -37,9 +41,53 @@
 //        
         
         //greeting
-        player.name = prompt("Whats your name son?");
-        alert(player.name + " really, thats the best you could come up with?");
-        
+        function beg(){
+            player.age = confirm("before we start, are you older than 18?(yes is ok)");
+            if(player.age == false){
+                alert("well i guess it really doesn't matter.");
+            }
+            else{
+                alert("ok thats enough for me, get ready for the most extreme game ever.");
+            }
+            
+            
+            player.name = prompt("Whats your name son? *read this in a morgan freeman voice for best experience*");
+            
+            
+        if(player.name == "cat"){
+            alert("hello my female child, is Noah being mean to you again?");
+            alert("I don't want you to suffer the difficulty of this game. so Ill send you right to the end, have fun.");
+            win();
+            
+            
+            
+        }
+        else if(player.name == "preston"){
+            alert("oH, hEY mr. pOwell, ie hOOpe you Liike this gam?");
+            alert("please don't dock points for that")
+        }
+        else if(player.name == "noah"){
+            var noah = confirm("hi, are you being mean to our female child cat again?")
+            if(noah == false){
+                alert("don't lie to me, I know you dont care about our child");
+                dead();
+                
+                
+                
+            }
+            else{
+                alert("well at least youre honest about it");
+                alert("but I still wont let you play.");
+                dead();
+                
+                
+                
+            }
+            
+        }
+        else{
+          alert(player.name + " really, thats the best you could come up with?");  
+        }
         
         player.race = prompt("What kind of creature are you?");
         
@@ -48,11 +96,8 @@
         }
         
         alert("Hello, " + player.name + " the " + player.race);
-        
-        alert("Well, I guess we should get started");
-        
-         //bad writing
-        
+                
+            
         var ok = confirm("am I doing good narrating? Because I feel like its not that great");
         if (ok == false){
             alert("ouch, that hurt, geeze");
@@ -60,6 +105,19 @@
         else {
             alert("k, cool");
         }
+            
+        alert("Well, I guess we should get started");
+        }
+        
+        
+        
+        
+        
+        
+        
+         //bad writing
+        
+        
         
         
         //setting
@@ -211,7 +269,7 @@
                             if(ok == true){
                                 alert("You eat the cookie, a troll jumps out of the shadows and yells at you for eating his cookie.");
                                 alert("He demands you pay for eating his cookie, but you have nothing but the clothes on your back.");
-                                ok = confirm("do you give him your clothes, or do you try and run?");
+                                ok = confirm("do you give him your clothes, or do you try and run?(to run is cancel)");
                                 if(ok == true){
                                     alert("the troll doesn't want your clothes and lets you go out of pity.");
                                     alert("he also gives you one of his many daggers as a token of good will");
@@ -290,10 +348,12 @@
             document.write("<h1 style='color:red; text-align: center;'>well, ah, you died refresh to restart, unless your too lame to");
             document.write('<img src="./loose.png">');
             document.getElementById('yourAudioTag').play();
+            System.exit(0);
         }
         function win(){
             document.write("<h1 style='color:yellow; text-align: center;'>you won? you actually won?  congrats!");
             document.write('<img src="./win.png">');
+            System.exit(0);
         }
         
         
